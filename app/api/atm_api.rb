@@ -55,7 +55,7 @@ class AtmAPI < Grape::API
       params do
         requires :amount, type: Integer, desc: 'Amount of money to withdraw.', values: AtmLogic::MIN_WITHDRAW..AtmLogic::MAX_WITHDRAW
       end
-      get :withdraw_banknotes do
+      put :withdraw_banknotes do
         validate_total!(params[:amount])
 
         atm_logic = AtmLogic.new(@atm)
